@@ -30,6 +30,7 @@ In tackling these puzzles, I focused on creating functional solutions rather tha
 ## Progress
 
 - [x] Day 1: Trebuchet?! (Time of completion: 31:17)
+- [x] Day 2: Cube Conundrum (Time of completion: 23:46)
 
 
 ## Structure of this Repo
