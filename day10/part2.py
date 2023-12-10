@@ -2,8 +2,8 @@ import math
 import sys
 import os
 
-sys.setrecursionlimit(99999)
-input = open("test_input.txt", "r").readlines()
+sys.setrecursionlimit(999999999)
+input = open("input.txt", "r").readlines()
 
 
 def find_starting_pos(input):
@@ -156,21 +156,22 @@ def find_next_step(input, steps, relative_pos_to_char):
     return find_next_step(input, steps, relative_pos_to_char)
 
 def flood_fill(matrix, x, y, fill_char, wall_char):
-    if x < 0 or x >= len(matrix) or y < 0 or y >= len(matrix[0]) or matrix[x][y] == wall_char or matrix[x][y] == fill_char:
-        return
-    os.system('clear')
+    stack = [(x, y)]
 
-    matrix[x][y] = fill_char
-    for i in new_input:
-        for j in i:
-            print(j, end="")
-        print()
+    while stack:
+        x, y = stack.pop()
 
-    flood_fill(matrix, x + 1, y, fill_char, wall_char)
-    flood_fill(matrix, x - 1, y, fill_char, wall_char)
-    flood_fill(matrix, x, y + 1, fill_char, wall_char)
-    flood_fill(matrix, x, y - 1, fill_char, wall_char)
+        if x < 0 or x >= len(matrix) or y < 0 or y >= len(matrix[0]):
+            continue
+        if matrix[x][y] == wall_char or matrix[x][y] == fill_char:
+            continue
 
+        matrix[x][y] = fill_char
+
+        stack.append((x + 1, y))
+        stack.append((x - 1, y))
+        stack.append((x, y + 1))
+        stack.append((x, y - 1))
 
 relative_pos_to_char = {
     "|" : [[1, 0], [-1, 0]],
@@ -280,3 +281,4 @@ print(counter)
 
 
 # 2:00:20
+# + 22:12 replace floodfill
