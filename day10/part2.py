@@ -279,3 +279,4 @@ for i in range(len(new_input)):
 print(counter)
 
 
+# 2:00:20
