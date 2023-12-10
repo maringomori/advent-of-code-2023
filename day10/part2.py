@@ -1,7 +1,9 @@
 import math
 import sys
+import os
+
 sys.setrecursionlimit(99999)
-input = open("input.txt", "r").readlines()
+input = open("test_input.txt", "r").readlines()
 
 
 def find_starting_pos(input):
@@ -156,8 +158,13 @@ def find_next_step(input, steps, relative_pos_to_char):
 def flood_fill(matrix, x, y, fill_char, wall_char):
     if x < 0 or x >= len(matrix) or y < 0 or y >= len(matrix[0]) or matrix[x][y] == wall_char or matrix[x][y] == fill_char:
         return
+    os.system('clear')
 
     matrix[x][y] = fill_char
+    for i in new_input:
+        for j in i:
+            print(j, end="")
+        print()
 
     flood_fill(matrix, x + 1, y, fill_char, wall_char)
     flood_fill(matrix, x - 1, y, fill_char, wall_char)
