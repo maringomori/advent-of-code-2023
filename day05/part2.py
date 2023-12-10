@@ -1,5 +1,7 @@
 
 import math
+import time
+start_time = time.time()
 #Find the location of a string and the text after it until empty line
 def find_string_location_and_text_before_empty_line(input, string):
     output = []
@@ -31,12 +33,11 @@ def find_source(source_target_sets, source):
     return source
 
 def convert_list(input_list):
-    result = []
     for i in range(0, len(input_list), 2):
         start = int(input_list[i])
         count = int(input_list[i + 1])
-        result.extend([str(x) for x in range(start, start + count)])
-    return result
+        for x in range(start, start + count):
+            yield str(x)
 
 
 
@@ -77,6 +78,8 @@ for seed in seeds:
         min_location = location
        
 print(min_location)
+print("--- %s seconds ---" % (time.time() - start_time))
+
 """
 print(find_string_location_and_text_before_empty_line(input, "soil-to-fertilizer map:"))
 print(find_string_location_and_text_before_empty_line(input, "fertilizer-to-water map:"))
@@ -86,4 +89,4 @@ print(find_string_location_and_text_before_empty_line(input, "temperature-to-hum
 print(find_string_location_and_text_before_empty_line(input, "humidity-to-location map:"))
 """
 
-#14:12
+#18:12
